@@ -39,7 +39,7 @@ class Usuario:
             print(produto.nome, produto.valor)
 
         print(f'\nValor total do carrinho: R$ {self.valor_total_carrinho()}')
-        print(f'Saldo disponível: R${self.saldo - self.valor_total_carrinho()}')
+        print(f'Saldo disponível: R$ {self.saldo - self.valor_total_carrinho()}')
         print('\n*----------*----------*----------*----------*----------*\n')
     
 
@@ -84,7 +84,7 @@ class Loja:
 
             while usuario.cpf == '':
                 usuario.cpf = input('Digite seu CPF: ')
-                if not usuario.cpf.isdigit() or not len(usuario.cpf) == 11:
+                if not usuario.cpf.isdigit() or not len(usuario.cpf) == 11 or usuario.cpf[::-1] == usuario.cpf:
                     print('CPF inválido.')
                     usuario.cpf = '' #Para que continue dentro da condição e pergunte o cpf novamente
 
@@ -92,10 +92,6 @@ class Loja:
                     print('Este CPF já está cadastrado!')
                     usuario.cpf = ''   
                        
-                if usuario.cpf[::-1] == usuario.cpf:
-                    print("CPF inválido.")
-                    usuario.cpf = ''
-
             usuario.email = input('Digite seu e-mail: ')
             while usuario.email == '' or '@' not in usuario.email: 
                 usuario.email = input('Digite um e-mail válido: ')
